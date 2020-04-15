@@ -42,9 +42,9 @@ export class AddComponent implements OnInit {
 
   }
 
-  onFileSelected(event) {
-    var reader = new FileReader();
-    reader.readAsDataURL(event.target.files[0]);
-    this.file=event.target.files[0];
-  }
+  // onFileSelected(event) {
+  //   var reader = new FileReader();
+  //   reader.readAsDataURL(event.target.files[0]);
+  //   this.file=event.target.files[0];
+  // }
 }

@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8 col-lg-5">
+      <h1><strong>
+        Contacts
+      </strong></h1>
+    </div>
+
+    <div class="col-4 col-lg-2 text-center align-self-center">
+      <button class="btn btn-primary" (click)='onAdd()'>Add</button>
+    </div>
+
+    <div class="col-12 col-lg-7">
+      <input type="text" class="form-control my-2" placeholder="Search By Name" [(ngModel)]="search" (input)="onChange($event)">
+    </div>
+
+    <div class="col-12 col-lg-7">
+      <button class="btn btn-success my-2" (click)='onSort()'>Sort Name</button>
+    </div>
+
+    <div class="col-12 col-lg-7">
+      <p *ngIf="filteredContacts.length === 0; else showContacts"><strong>No Contacts Found!</strong></p>
+      <ng-template #showContacts>
+        <div class="card mb-2" *ngFor="let contact of filteredContacts" style="height: 15%;">
+          <div class="row no-gutters" style="max-height:100%">
+            <div class="col-4" style="max-height: 100%;">
+              <img [src]='contact.imageURL' class="card-img" style="height: 100%; border-radius: 50%;">
+            </div>
+            <div class="col-6" style="max-height:100%;">
+              <div class="card-body p-1 text-center">
+                <h5 class="card-title mb-0">{{contact.firstName + ' ' + contact.lastName | titlecase}}</h5>
+                <p class="card-text mb-0">{{contact.email}}</p>
+                <p class="card-text">{{contact.phoneNumber}}</p>
+              </div>
+            </div>
+            <div class="col-2" style="max-height: 100%;">
+              <button class="btn btn-secondary" (click)='onEdit(contact)'>Edit</button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
+{{search}}
